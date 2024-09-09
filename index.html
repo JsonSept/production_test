@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy Calculator with Inverter Types</title>
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1>Solar Energy Production & Usage Calculator</h1>
+
+        <label for="solarIrradiance">Solar Irradiance (kWh/m²/day):</label>
+        <input type="number" id="solarIrradiance" placeholder="e.g., 5.5">
+
+        <label for="panelArea">Panel Surface Area (m²):</label>
+        <input type="number" id="panelArea" placeholder="e.g., 20">
+
+        <label for="panelEfficiency">Panel Efficiency (%):</label>
+        <input type="number" id="panelEfficiency" placeholder="e.g., 15">
+
+        <!-- Inverter Type Dropdown -->
+        <label for="inverterType">Inverter Type:</label>
+        <select id="inverterType">
+            <option value="grid-tied" data-efficiency="95">Grid-Tied (95%)</option>
+            <option value="off-grid" data-efficiency="90">Off-Grid (90%)</option>
+            <option value="hybrid" data-efficiency="92">Hybrid (92%)</option>
+        </select>
+
+        <label for="batteryCapacity">Battery Capacity (kWh):</label>
+        <input type="number" id="batteryCapacity" placeholder="e.g., 10">
+
+        <label for="batteryEfficiency">Battery Efficiency (%):</label>
+        <input type="number" id="batteryEfficiency" placeholder="e.g., 90">
+
+        <button onclick="calculateSolarEnergy()">Calculate Energy Output</button>
+
+        <div class="result" id="result">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+<div class="type">
+    <h1>Hover to Learn More About Inverter Types</h1>
+    
+    <div class="inverter-type">
+        Grid-Tied Inverter
+        <div class="popup">
+            <strong>Grid-Tied Inverter</strong><br>
+            Efficient inverter connected to the grid.<br>
+            Efficiency: 95-98%.<br>
+            No battery storage.
+        </div>
+    </div>
+    
+    <div class="inverter-type">
+        Off-Grid Inverter
+        <div class="popup">
+            <strong>Off-Grid Inverter</strong><br>
+            For systems not connected to the grid.<br>
+            Efficiency: 85-95%.<br>
+            Requires battery storage.
+        </div>
+    </div>
+    
+    <div class="inverter-type">
+        Hybrid Inverter
+        <div class="popup">
+            <strong>Hybrid Inverter</strong><br>
+            Combines grid-tied and off-grid benefits.<br>
+            Efficiency: 90-95%.<br>
+            Supports battery storage.
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    input {
+        margin: 10px 0;
+        padding: 5px;
+        width: 100%;
+    }
+
+    button {
+        padding: 10px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+    }
+
+    .inverter-type {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            margin: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .inverter-type:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Popup Box */
+        .popup {
+            visibility: hidden;
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%; /* Position the popup box */
+            left: 50%;
+            margin-left: -125px; /* Center the popup */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Arrow for the popup */
+        .popup::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        /* Show the popup when hovering over the inverter type */
+        .inverter-type:hover .popup {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</style>
+</html>
